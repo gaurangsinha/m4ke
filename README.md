@@ -6,7 +6,7 @@ Basic static site generator using m4, make and bash
 $ make clean
 $ make
 ```
-`make` will process all `.m4` files present in the `INPUT_FOLDER`.
+`make` will process all `.m4` files present in the [`INPUT_FOLDER`](https://github.com/gaurangsinha/m4ke/blob/main/Makefile#L3).
 
 ### Folder structure
 ```

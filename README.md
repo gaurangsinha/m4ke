@@ -1,5 +1,5 @@
 # m4ke
-Basic static site generator using m4, make and bash
+With static site generators getting complex, m4ke is an extremely simple generator using easily accessible tools like `make` and `m4`.   
 
 ### Usage
 ```
@@ -10,13 +10,17 @@ $ make
 
 ### Folder structure
 ```
-+ - Makefile
-+ - posts/
-  + - __header__.tmpl
-  + - __footer__.tmpl
-  + - 00_about.m4
-  + - 2023-07-30 bootstrapping.m4
-+ - out/
+| - Makefile
+| - posts/
+  | - __header__.tmpl
+  | - __footer__.tmpl
+  | - 00_about.m4
+  | - 2023-07-30_bootstrapping.m4
+  | - style.css
+| - out/
+  | - 00_about.html
+  | - 2023-07-30_bootstrapping.html
+  | - style.css
 ```
 
 
@@ -30,6 +34,7 @@ Basic structure of a post: defines a few macros (timestamp, title, etc), include
 define(__timestamp, 2023-07-30)dnl
 define(__title, `bootstrapping')dnl
 define(__subtitle, `building a static site generator')dnl
+define(__description, `building a static site generator')dnl
 define(__id, 1)dnl
 include(./__header__.tmpl)
 
@@ -40,7 +45,7 @@ this can be html
 include(./__footer__.tmpl)
 ```
 
-### Headers & Footers
+### Templates | Headers & Footers
 Header
 ```
 <!DOCTYPE html>

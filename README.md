@@ -31,11 +31,10 @@ Other static pages on the site can have the following format `00_page_name.m4`.
 
 Basic structure of a post: defines a few macros (timestamp, title, etc), includes header and footer templates.
 ```
-define(__timestamp, 2023-07-30)dnl
+define(__timestamp, `Sun, 30 Jul 2023 15:54:18 -0700')dnl
 define(__title, `bootstrapping')dnl
-define(__subtitle, `building a static site generator')dnl
 define(__description, `building a static site generator')dnl
-define(__id, 1)dnl
+define(__id, `2023-07-30_bootstrapping')dnl
 include(./__header__.tmpl)
 
 post content goes here.
@@ -51,11 +50,10 @@ Header
 <!DOCTYPE html>
 <html>
 <head>
-  <title>__title | __subtitle</title>
+  <title>__title</title>
 </head>
 <body>
     <h1>__title</h1>
-    <h3>__subtitle</h3>
     __timestamp
 ```
 

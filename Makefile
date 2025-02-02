@@ -52,6 +52,7 @@ index:
                 echo "<url><loc>{link}</loc><lastmod>{post_date}</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items; \
 	done
 	m4 -I $(INPUT_FOLDER) -I $(OUTPUT_FOLDER) 00_posts.m4 > $(OUTPUT_FOLDER)/00_posts.html
+	m4 -I $(INPUT_FOLDER) -I $(OUTPUT_FOLDER) 00_sitemap.xml > $(OUTPUT_FOLDER)/sitemap.xml
 	rm -f $(OUTPUT_FOLDER)/tmp_index_items $(OUTPUT_FOLDER)/tmp_sitemap_items
 
 pages:

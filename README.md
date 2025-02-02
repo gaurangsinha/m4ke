@@ -20,7 +20,7 @@ m4ke leverages [m4 macro processor](https://en.wikipedia.org/wiki/M4_(computer_l
 ### Usage
 ```
 $ make clean
-$ make all
+$ make all BASE_URL="https://example.com"
 ```
 `make` will process all `.m4` files present in the [`INPUT_FOLDER`](https://github.com/gaurangsinha/m4ke/blob/main/Makefile#L5).
 
@@ -31,6 +31,7 @@ $ make all
   | - 00_about.m4
   | - 00_contact.m4
   | - 00_posts.m4
+  | - 00_sitemap.xml
   | - 2023-09-02_hello_world.m4
   | - 2023-09-03_hello_again.m4
   | - __header__.tmpl
@@ -41,7 +42,8 @@ $ make all
 - Files starting with a `YYYY-MM-DD` are post (e.g. `2023-09-02_hello_world.m4`)
 - `00_posts.m4` is a special page which the `Makefile` populates with the index of all the posts. This index will not contain static pages i.e. the ones starting with `NN`.
 - Other static files like `style.css` need to copied into the destination folder by specifying them in the [`static`](https://github.com/gaurangsinha/m4ke/blob/main/Makefile#L32) section of the Makefile.
-- Files with `tmpl` extensions are template files (e.g. `__header__.tmpl`), these are used by other pages and posts during their processing. 
+- Files with `tmpl` extensions are template files (e.g. `__header__.tmpl`), these are used by other pages and posts during their processing.
+- `00_sitemap.xml` is used to generate a sitemap of all the posts; this file is placed in the root output folder as `sitemap.xml`.
 
 ### Post & page structure
 Post filename must be for the following format `YYYY-MM-DD_title_of_post.m4`.

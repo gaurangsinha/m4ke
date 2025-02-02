@@ -42,7 +42,10 @@ index_post:
 	m4 -I $(INPUT_FOLDER) "$(LATEST_POST)" > "$(OUTPUT_FOLDER)/index.html"
 
 index:
-	rm -f $(OUTPUT_FOLDER)/tmp_index_items;
+	rm -f $(OUTPUT_FOLDER)/tmp_index_items  $(OUTPUT_FOLDER)/tmp_sitemap_items;
+	echo "<url><loc>$$BASE_URL/00_about.html</loc><lastmod>$$(date +%F)</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items;
+	echo "<url><loc>$$BASE_URL/00_contact.html</loc><lastmod>$$(date +%F)</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items;
+	echo "<url><loc>$$BASE_URL/00_posts.html</loc><lastmod>$$(date +%F)</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items;
 	for post in $(POST_LIST); do \
 		name=$$(basename $${post%.*}); \
 		link=$$(echo $$name.html); \

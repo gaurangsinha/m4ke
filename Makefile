@@ -49,7 +49,7 @@ index:
                 post_date=$$(echo $$name | cut -d'_' -f1); \
 		human=$$(echo $$name | sed 's/_/ /g'); \
 		echo "<a href='$$link'>$$human</a><br/>" >> $(OUTPUT_FOLDER)/tmp_index_items; \
-                echo "<url><loc>{link}</loc><lastmod>{post_date}</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items; \
+                echo "<url><loc>$$link</loc><lastmod>$$post_date</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items; \
 	done
 	m4 -I $(INPUT_FOLDER) -I $(OUTPUT_FOLDER) 00_posts.m4 > $(OUTPUT_FOLDER)/00_posts.html
 	m4 -I $(INPUT_FOLDER) -I $(OUTPUT_FOLDER) 00_sitemap.xml > $(OUTPUT_FOLDER)/sitemap.xml

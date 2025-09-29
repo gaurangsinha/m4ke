@@ -42,7 +42,7 @@ index_post:
 	m4 -I $(INPUT_FOLDER) "$(LATEST_POST)" > "$(OUTPUT_FOLDER)/index.html"
 
 index:
-	rm -f $(OUTPUT_FOLDER)/tmp_index_items  $(OUTPUT_FOLDER)/tmp_sitemap_items;
+	rm -f $(OUTPUT_FOLDER)/tmp_index_items  $(OUTPUT_FOLDER)/tmp_sitemap_items $(OUTPUT_FOLDER)/tmp_rss_items;
 	echo "<url><loc>$$BASE_URL/00_about.html</loc><lastmod>$$(date +%F)</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items;
 	echo "<url><loc>$$BASE_URL/00_contact.html</loc><lastmod>$$(date +%F)</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items;
 	echo "<url><loc>$$BASE_URL/00_posts.html</loc><lastmod>$$(date +%F)</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items;
@@ -53,10 +53,12 @@ index:
 		human=$$(echo $$name | sed 's/_/ /g'); \
 		echo "<a href='$$link'>$$human</a><br/>" >> $(OUTPUT_FOLDER)/tmp_index_items; \
                 echo "<url><loc>$$BASE_URL/$$link</loc><lastmod>$$post_date</lastmod></url>" >> $(OUTPUT_FOLDER)/tmp_sitemap_items; \
+                echo "<item><title>$$human</title><link>$$BASE_URL/$$link</link><description>$$human</description><pubDate>$$post_date</pubDate></item>" >> $(OUTPUT_FOLDER)/tmp_rss_items; \
 	done
 	m4 -I $(INPUT_FOLDER) -I $(OUTPUT_FOLDER) 00_posts.m4 > $(OUTPUT_FOLDER)/00_posts.html
 	m4 -I $(INPUT_FOLDER) -I $(OUTPUT_FOLDER) 00_sitemap.xml > $(OUTPUT_FOLDER)/sitemap.xml
-	rm -f $(OUTPUT_FOLDER)/tmp_index_items $(OUTPUT_FOLDER)/tmp_sitemap_items
+	m4 -I $(INPUT_FOLDER) -I $(OUTPUT_FOLDER) 00_rss.xml > $(OUTPUT_FOLDER)/rss.xml
+	rm -f $(OUTPUT_FOLDER)/tmp_index_items $(OUTPUT_FOLDER)/tmp_sitemap_items $(OUTPUT_FOLDER)/tmp_rss_items
 
 pages:
 	m4 -I $(INPUT_FOLDER) 00_about.m4 > $(OUTPUT_FOLDER)/00_about.html

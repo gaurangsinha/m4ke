@@ -24,6 +24,13 @@ $ make all BASE_URL="https://example.com"
 ```
 `make` will process all `.m4` files present in the [`INPUT_FOLDER`](https://github.com/gaurangsinha/m4ke/blob/main/Makefile#L5).
 
+### Docker Usage
+To build the blog using Docker, run the following command:
+```
+$ docker build -t m4ke .
+$ docker run --rm -v $(pwd)/input:/run/input -v $(pwd)/output:/run/output m4ke
+```
+
 ### Folder structure
 ```
 | - Makefile
@@ -32,6 +39,7 @@ $ make all BASE_URL="https://example.com"
   | - 00_contact.m4
   | - 00_posts.m4
   | - 00_sitemap.xml
+  | - 00_rss.xml
   | - 2023-09-02_hello_world.m4
   | - 2023-09-03_hello_again.m4
   | - __header__.tmpl
@@ -44,6 +52,7 @@ $ make all BASE_URL="https://example.com"
 - Other static files like `style.css` need to copied into the destination folder by specifying them in the [`static`](https://github.com/gaurangsinha/m4ke/blob/main/Makefile#L32) section of the Makefile.
 - Files with `tmpl` extensions are template files (e.g. `__header__.tmpl`), these are used by other pages and posts during their processing.
 - `00_sitemap.xml` is used to generate a sitemap of all the posts; this file is placed in the root output folder as `sitemap.xml`.
+- `00_rss.xml` is used to generate an RSS feed of all the posts; this file is placed in the root output folder as `rss.xml`.
 
 ### Post & page structure
 Post filename must be for the following format `YYYY-MM-DD_title_of_post.m4`.

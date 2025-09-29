@@ -28,7 +28,7 @@ $ make all BASE_URL="https://example.com"
 To build the blog using Docker, run the following command:
 ```
 $ docker build -t m4ke .
-$ docker run --rm -v $(pwd)/input:/run/input -v $(pwd)/output:/run/output m4ke
+$ docker run --rm -v $(pwd)/input:/run/input -v $(pwd)/output:/run/output m4ke BASE_URL="https://example.com""
 ```
 
 ### Folder structure
